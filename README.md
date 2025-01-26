@@ -6,15 +6,17 @@ This project combines ultrasonic distance sensing, accident detection, and emerg
 
 ## Repository Structure
 
+```
 [Accident-Detection-System-GPS]
 ├── Libraries
-│ ├── GPS Library and Hex
-│ ├── GSM Library and Hex
-│ ├── Arduino Library and Hex
+│   ├── GPS Library and Hex
+│   ├── GSM Library and Hex
+│   ├── Arduino Library and Hex
 ├── Arduino Code
-│ ├── [Accident_Detection_System].ino
-│ ├── [Accident_Detection_System].hex
+│   ├── [Accident_Detection_System].ino
+│   ├── [Accident_Detection_System].hex
 ├── Simulation
+```
 
 ## Features
 
