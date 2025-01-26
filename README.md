@@ -1,24 +1,20 @@
 Here's the full content in `README.md` format for your GitHub repository:
 
-````markdown
-# Accident Detection System with Ultrasonic Sensing and GPS
+## Accident Detection System with Ultrasonic Sensing and GPS
 
 This project combines ultrasonic distance sensing, accident detection, and emergency response features using GPS and GSM modules. The system is designed to detect accidents through simulated ultrasonic sensors, send real-time location data via GPS, and initiate an emergency response through GSM calls and messages.
 
 ## Repository Structure
 
-```plaintext
 [Accident-Detection-System-GPS]
 ├── Libraries
-│   ├── GPS Library and Hex
-│   ├── GSM Library and Hex
-│   ├── Arduino Library and Hex
+│ ├── GPS Library and Hex
+│ ├── GSM Library and Hex
+│ ├── Arduino Library and Hex
 ├── Arduino Code
-│   ├── [Accident_Detection_System].ino
-│   ├── [Accident_Detection_System].hex
+│ ├── [Accident_Detection_System].ino
+│ ├── [Accident_Detection_System].hex
 ├── Simulation
-```
-````
 
 ## Features
 
@@ -106,5 +102,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ```
 
+
+```
+
+```
 
 ```
