@@ -101,12 +101,3 @@ This project is done using Proteus 8.17 SP2 (Build 37519) it might possibly not 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-```
-
-
-```
-
-```
-
-```
