@@ -1,4 +1,3 @@
-Here's the full content in `README.md` format for your GitHub repository:
 
 ## Accident Detection System with Ultrasonic Sensing and GPS
 
