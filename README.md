@@ -93,16 +93,18 @@ Both the libraries and their `.hex` files will be provided in the **Libraries** 
 
 Once you've completed the above steps, you can start the simulation in **Proteus** and observe the behavior of the accident detection system. When the ultrasonic sensors detect a certain distance, the system will trigger the emergency response, which includes sending location data via GPS and calling the emergency contact through GSM.
 
+## NOTE
+
+This project is done using Proteus 8.17 SP2 (Build 37519) it might possibly not work on versions less than that
+
+##Download Link
+<a href="https://getintopc.com/softwares/electrical-engineering/proteus-professional-2024-free-download/">Proteus 8.17 SP2</a>
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ```
 
-## NOTE
-This project is done using Proteus 8.17 SP2 (Build 37519) it might possibly not work on versions less than that
-
-##Download Link
-<a href="https://getintopc.com/softwares/electrical-engineering/proteus-professional-2024-free-download/">
 
 ```
