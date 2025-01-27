@@ -23,6 +23,7 @@ TinyGPSPlus gps;
 float latitude = 0.0;  // Default latitude
 float longitude = 0.0; // Default longitude
 bool emergencyTriggered = false;
+bool emergencyHandled = false;  // New flag to track if emergency has been handled
 // Variables for potentiometers and distances
 int lastDistanceRight = -1;
 int lastDistanceLeft = -1;
@@ -38,6 +39,8 @@ int calculateBrightness(int distance) {
 
 // Handle emergency scenario
 void handleEmergency() {
+  if (emergencyHandled) return;  // Skip if already handled this emergency
+
   for (int i = 0; i < 2; i++) {
     // Calling emergency number
     vt2.println("Calling emergency...");  // Change Serial to vt2
@@ -79,11 +82,8 @@ void handleEmergency() {
     delay(2000); // Wait before next call attempt to avoid rapid firing
   }
 
-  // Reset emergency state after handling emergency
-  emergencyTriggered = false; // This allows the emergency system to be triggered again
-
-  // Return to normal state after handling emergency
-  Serial.println("Emergency handled, system back to normal.");
+  emergencyHandled = true;  // Mark this emergency as handled
+  Serial.println("Emergency handled, waiting for system reset.");
 }
 
 void setup() {
@@ -173,7 +173,7 @@ void loop() {
   }
 
   // Check for pushbutton press for immediate emergency alert (first button)
-  if (digitalRead(BUTTON_PIN) == HIGH && !emergencyTriggered) {
+  if (digitalRead(BUTTON_PIN) == HIGH && !emergencyHandled) {
     Serial.println("First push button pressed");
     emergencyTriggered = true;
     handleEmergency();
@@ -190,13 +190,11 @@ void loop() {
     }
 
     // Check if the button has been pressed for 3 seconds
-    if (millis() - tiltButtonPressStartTime >= 3000) {
-      if (!emergencyTriggered) {  // Only trigger if the emergency hasn't been activated yet
-        Serial.println("Second push button pressed for 3 seconds.");
-        emergencyTriggered = true;
-        handleEmergency();
-        delay(1000); // Debounce delay to prevent multiple triggers
-      }
+    if (millis() - tiltButtonPressStartTime >= 3000 && !emergencyHandled) {
+      Serial.println("Second push button pressed for 3 seconds.");
+      emergencyTriggered = true;
+      handleEmergency();
+      delay(1000); // Debounce delay to prevent multiple triggers
     }
   } else {
     if (tiltButtonPressed) {
@@ -209,8 +207,12 @@ void loop() {
 
   // Reset the emergency state if both buttons are released
   if (digitalRead(BUTTON_PIN) == LOW && digitalRead(TILT_BUTTON_PIN) == LOW) {
-    emergencyTriggered = false; // Reset emergency trigger
-    Serial.println("Both buttons released, system reset.");
+    // Only reset if we were in an emergency state
+    if (emergencyTriggered) {
+      emergencyTriggered = false;
+      emergencyHandled = false;  // Reset the handled flag
+      Serial.println("Both buttons released, system reset.");
+    }
   }
 
   delay(100); // Small delay for stability
